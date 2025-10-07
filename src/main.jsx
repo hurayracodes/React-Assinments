@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 createRoot(document.getElementById('root')).render(
     <>
+    < SpeedInsights />
     <FormHadling />
     </>
 )

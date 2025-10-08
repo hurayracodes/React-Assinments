@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const notify = () => toast('Here is your toast.');
+const myName = "Abu Huraira";
+const currentDate = new Date();
+
 function FormHadling() {
   const [user, setUser] = useState({
     img: "",
@@ -22,16 +24,21 @@ function FormHadling() {
   function submitData(dets) {
     dets.preventDefault();
     // console.log(user);
-    if (lastName !== '' && firstName !== '' && email !== '' && password !== '') {
+    if (
+      lastName !== "" &&
+      firstName !== "" &&
+      email !== "" &&
+      password !== ""
+    ) {
       setUsers([...users, user]);
       setUser({
-        img:'',
-        firstName:'',
-        lastName:'',
-        email:'',
-        password:''
-      })
-      toast.success('Successfully toasted!')
+        img: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
+      toast.success("Successfully toasted!");
     }
   }
   return (
@@ -184,22 +191,28 @@ function FormHadling() {
       <div className="Container flex flex-wrap gap-3 w-11/12 mx-auto p-6">
         {users.map((dets) => {
           return (
-            <Card className="bg-slate-100 p-5 rounded-lg shadow-xl" style={{ width: "30%" }}>
-                    <div className="w-20 h-20 rounded-full overflow-hidden">
-                      <img className="bg-cover" src={dets.img} alt="Usr Image"/>
-                    </div>
+            <Card
+              className="bg-slate-100 p-5 rounded-lg shadow-xl"
+              style={{ width: "30%" }}
+            >
+              <div className="w-20 h-20 rounded-full overflow-hidden">
+                <img className="bg-cover" src={dets.img} alt="Usr Image" />
+              </div>
               <Card.Body>
-                <Card.Title className="text-2xl font-semibold">{dets.firstName}</Card.Title>
+                <Card.Title className="text-2xl font-semibold">
+                  {dets.firstName}
+                </Card.Title>
                 <Card.Title>{dets.lastName}</Card.Title>
-                <Card.Text>
-                  {dets.email}
-                </Card.Text>
+                <Card.Text>{dets.email}</Card.Text>
                 <Button variant="primary">{dets.password}</Button>
               </Card.Body>
             </Card>
           );
         })}
       </div>
+    <footer className="flex p-9">
+      <p className="text-orange-200"> Copyright , {currentDate.getFullYear()} <b className="text-amber-400">hurayracodes</b> <span>Built by {myName}</span></p>
+      </footer>  
     </section>
   );
 }
